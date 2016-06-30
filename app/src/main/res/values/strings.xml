@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Tp2</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="input_username">Github Username</string>
+    <string name="send">Send</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="pseudo">USERNAME</string>
+    <string name="user">USER</string>
+    <string name="nav_user">Compte GitHub</string>
+    <string name="nav_repos">Repos GitHub</string>
+    <string name="nav_stats">Communauté</string>
+    <string name="nav_disconnect">Déconnexion</string>
+    <string name="user_space">Espace utilisateur</string>
+    <string name="title_navigation_drawer">NavigationDrawerActivity</string>
+
+
+    <string name="nb_repos">Number of repositories</string>
+    <string name="followers">Followers</string>
+    <string name="following">Following</string>
+
+    <string name="nb_followers">"Number of followers : "</string>
+    <string name="nb_following">"Number of followed users : "</string>
+
+</resources>
