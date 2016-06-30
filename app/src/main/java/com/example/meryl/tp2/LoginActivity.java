@@ -33,9 +33,11 @@ public class LoginActivity  extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
-
-        sharedPref = getApplicationContext().getSharedPreferences("github_app", Context.MODE_PRIVATE);
-        username.setText(sharedPref.getString(getString(R.string.input_username), ""));
+        if(sharedPref != null) {
+            System.out.println("HERE !!!!!");
+        }
+            sharedPref = getApplicationContext().getSharedPreferences("github_app", Context.MODE_PRIVATE);
+            username.setText(sharedPref.getString(getString(R.string.input_username), ""));
 
         service = GithubWebService.get();
     }
