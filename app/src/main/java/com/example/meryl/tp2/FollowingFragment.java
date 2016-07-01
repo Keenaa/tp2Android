@@ -11,13 +11,14 @@ import android.widget.TextView;
  * Created by meryl on 30/06/16.
  */
 public class FollowingFragment extends Fragment {
+    public static final String USER = "USER";
     private static FollowingFragment followingFragment;
 
     public static FollowingFragment newInstance(User user) {
         FollowingFragment myFragment = new FollowingFragment();
 
         Bundle args = new Bundle();
-        args.putParcelable("USER", user);
+        args.putParcelable(USER, user);
         myFragment.setArguments(args);
 
         return myFragment;
@@ -33,7 +34,7 @@ public class FollowingFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_display, container, false);
         TextView textView = (TextView) view.findViewById(R.id.info_text);
-        User user = getArguments().getParcelable("USER");
+        User user = getArguments().getParcelable(USER);
         String text;
         if (user != null) {
             text = getString(R.string.nb_following) + user.getFollowing();

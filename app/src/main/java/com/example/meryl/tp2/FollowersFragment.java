@@ -9,11 +9,13 @@ import android.widget.TextView;
 
 public class FollowersFragment extends Fragment {
 
+    public static final String USER = "USER";
+
     public static FollowersFragment newInstance(User user) {
         FollowersFragment myFragment = new FollowersFragment();
 
         Bundle args = new Bundle();
-        args.putParcelable("USER", user);
+        args.putParcelable(USER, user);
         myFragment.setArguments(args);
 
         return myFragment;
@@ -29,7 +31,7 @@ public class FollowersFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_display, container, false);
         TextView textView = (TextView) view.findViewById(R.id.info_text);
-        User user = getArguments().getParcelable("USER");
+        User user = getArguments().getParcelable(USER);
         String text;
         if (user != null) {
             text = getString(R.string.nb_followers) + user.getFollowers();

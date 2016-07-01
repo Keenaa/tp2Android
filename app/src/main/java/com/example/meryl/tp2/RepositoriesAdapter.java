@@ -13,11 +13,11 @@ import java.util.List;
 
 public class RepositoriesAdapter  extends RecyclerView.Adapter<RepositoriesAdapter.RepositoriesViewHolder> {
     List<Repositories> repositories;
-    static Context context;
+    Context context; //Correction éviter les static
 
     public RepositoriesAdapter(List<Repositories> repositories, Context context) {
         this.repositories = repositories;
-        RepositoriesAdapter.context = context;
+        this.context = context;
     }
 
     @Override
@@ -28,8 +28,7 @@ public class RepositoriesAdapter  extends RecyclerView.Adapter<RepositoriesAdapt
 
     @Override
     public void onBindViewHolder(RepositoriesViewHolder holder, final int position) {
-        holder.name.setText(repositories.get(position).getName());
-        holder.id.setText(repositories.get(position).getId());
+        holder.bind(repositories.get(position)); //Correction added bind method
     }
 
     @Override
@@ -47,13 +46,10 @@ public class RepositoriesAdapter  extends RecyclerView.Adapter<RepositoriesAdapt
             this.id = (TextView) itemView.findViewById(R.id.repositories_id);
         }
 
+        public void bind(Repositories repository) {
+            name.setText(repository.getName());
+            id.setText(repository.getId());
+        }
     }
-
-    @Override
-    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
-        super.onAttachedToRecyclerView(recyclerView);
-    }
-
-
 
 }

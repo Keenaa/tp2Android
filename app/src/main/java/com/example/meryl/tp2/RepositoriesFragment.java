@@ -21,6 +21,7 @@ import retrofit2.Response;
 
 
 public class RepositoriesFragment extends Fragment {
+    public static final String USER = "USER";
     GitHubService service;
     @BindView(R.id.refreshRepositories)
     SwipeRefreshLayout refreshRepositories;
@@ -31,27 +32,22 @@ public class RepositoriesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_repositories, container, false);
-
         ButterKnife.bind(this, rootView);
         this.initView();
-
         return rootView;
     }
 
     public static RepositoriesFragment newInstance(User user) {
         RepositoriesFragment myFragment = new RepositoriesFragment();
-
         Bundle args = new Bundle();
-        args.putParcelable("USER", user);
+        args.putParcelable(USER, user);
         myFragment.setArguments(args);
-
         return myFragment;
     }
 
     private void initView() {
         service = GithubWebService.get();
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        listRepo.setLayoutManager(layoutManager);
+        listRepo.setLayoutManager(new LinearLayoutManager(getActivity()));
         refreshRepositories.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -64,7 +60,7 @@ public class RepositoriesFragment extends Fragment {
 
     private void getRepositories (){
         Bundle args = getArguments();
-        User user = args.getParcelable("USER");
+        User user = args.getParcelable(USER);
         if (user != null) {
             service.getUsersRepositories(user.getLogin()).enqueue(new Callback<ArrayList<Repositories>>() {
                 @Override

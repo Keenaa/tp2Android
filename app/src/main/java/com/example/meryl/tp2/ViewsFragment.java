@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class ViewsFragment extends Fragment {
+    public static final String USER = "USER";
     private View rootView;
 
     @Nullable
@@ -26,7 +27,7 @@ public class ViewsFragment extends Fragment {
         ViewsFragment myFragment = new ViewsFragment();
 
         Bundle args = new Bundle();
-        args.putParcelable("USER", user);
+        args.putParcelable(USER, user);
         myFragment.setArguments(args);
 
         return myFragment;
@@ -35,7 +36,7 @@ public class ViewsFragment extends Fragment {
     private void initView() {
         ViewPager views = (ViewPager) rootView.findViewById(R.id.views);
         if (views != null) {
-            User user = getArguments().getParcelable("USER");
+            User user = getArguments().getParcelable(USER);
             views.setAdapter(new ViewsAdapter(getChildFragmentManager(),
                     getActivity(), user));
         }

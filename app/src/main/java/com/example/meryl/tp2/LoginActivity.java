@@ -18,13 +18,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginActivity  extends AppCompatActivity {
+    public static final String MY_PREFS_FILE = "MyPrefsFile";
     @BindView(R.id.username)
     TextView username;
     @BindView(R.id.send)
     AppCompatButton btnValid;
 
     SharedPreferences sharedPref;
-    public static final String SAVE = "userName";
 
     GitHubService service;
 
@@ -34,10 +34,9 @@ public class LoginActivity  extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         ButterKnife.bind(this);
-        String test = sharedPref.toString();
-
-        sharedPref = getSharedPreferences("MyPrefsFile", 0);
-        String user = sharedPref.getString(SAVE, "");
+        service = GithubWebService.get();
+        sharedPref = getSharedPreferences(MY_PREFS_FILE, 0);
+        String user = sharedPref.getString(getString(R.string.input_username), "");
 
         Log.v("TEST", user);
 
@@ -74,7 +73,7 @@ public class LoginActivity  extends AppCompatActivity {
     }
 
     public void saveUser(String name){
-        //sharedPref.edit().putString(getString(R.string.input_username), name).apply();
+        sharedPref.edit().putString(getString(R.string.input_username), name).apply();
     }
 
     protected void goToNextActivity(User user){
