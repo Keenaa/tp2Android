@@ -24,22 +24,24 @@ public class LoginActivity  extends AppCompatActivity {
     AppCompatButton btnValid;
 
     SharedPreferences sharedPref;
+    public static final String SAVE = "userName";
 
     GitHubService service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
         ButterKnife.bind(this);
-        if(sharedPref != null) {
-            System.out.println("HERE !!!!!");
-        }
-            sharedPref = getApplicationContext().getSharedPreferences("github_app", Context.MODE_PRIVATE);
-            username.setText(sharedPref.getString(getString(R.string.input_username), ""));
+        String test = sharedPref.toString();
 
-        service = GithubWebService.get();
+        sharedPref = getSharedPreferences("MyPrefsFile", 0);
+        String user = sharedPref.getString(SAVE, "");
+
+        Log.v("TEST", user);
+
+        username.setText(user);
     }
 
     protected void loadUser(String name){
@@ -72,7 +74,7 @@ public class LoginActivity  extends AppCompatActivity {
     }
 
     public void saveUser(String name){
-        sharedPref.edit().putString(getString(R.string.input_username), name).apply();
+        //sharedPref.edit().putString(getString(R.string.input_username), name).apply();
     }
 
     protected void goToNextActivity(User user){

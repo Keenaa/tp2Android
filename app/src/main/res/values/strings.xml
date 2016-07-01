@@ -10,10 +10,10 @@
     <string name="pseudo">USERNAME</string>
     <string name="user">USER</string>
     <string name="nav_user">Compte GitHub</string>
-    <string name="nav_repos">Repos GitHub</string>
-    <string name="nav_stats">Communauté</string>
-    <string name="nav_disconnect">Déconnexion</string>
-    <string name="user_space">Espace utilisateur</string>
+    <string name="nav_repos">Repositories GitHub</string>
+    <string name="nav_stats">Community</string>
+    <string name="nav_disconnect">Log Out</string>
+    <string name="user_space">User Profile</string>
     <string name="title_navigation_drawer">NavigationDrawerActivity</string>
 
 
