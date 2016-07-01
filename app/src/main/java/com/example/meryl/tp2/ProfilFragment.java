@@ -15,6 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ProfilFragment extends Fragment {
+    public static final String USER = "USER";
     @BindView(R.id.pseudo)
     TextView pseudo;
     @BindView(R.id.user_image)
@@ -24,10 +25,8 @@ public class ProfilFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
-
         ButterKnife.bind(this, rootView);
         this.initView();
-
         return rootView;
     }
 
@@ -35,7 +34,7 @@ public class ProfilFragment extends Fragment {
         ProfilFragment myFragment = new ProfilFragment();
 
         Bundle args = new Bundle();
-        args.putParcelable("USER", user);
+        args.putParcelable(USER, user);
         myFragment.setArguments(args);
 
         return myFragment;
@@ -43,7 +42,7 @@ public class ProfilFragment extends Fragment {
 
     private void initView() {
         Bundle args = getArguments();
-        User user = args.getParcelable("USER");
+        User user = args.getParcelable(USER);
         if (user != null) {
             System.out.println(user.getName());
             pseudo.setText(user.getName());
